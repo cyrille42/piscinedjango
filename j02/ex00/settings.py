@@ -1,0 +1,5 @@
+title = "Curriculum Vitae"
+firstName = "cyrille"
+lastName = "gay"
+age = "24"
+prof = "Dev Full Stack"
