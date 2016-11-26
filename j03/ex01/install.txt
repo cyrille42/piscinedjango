@@ -1,0 +1,3 @@
+Collecting git+https://github.com/jaraco/path.py.git
+  Cloning https://github.com/jaraco/path.py.git to /private/var/folders/zz/zyxvpxvq6csfxvn_n00014w8000972/T/pip-lhqe3q_y-build
+  Requirement already satisfied (use --upgrade to upgrade): path.py==9.1.dev3+ng786d75c from git+https://github.com/jaraco/path.py.git in ./local_lib/lib/python3.4/site-packages

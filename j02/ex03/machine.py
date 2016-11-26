@@ -12,8 +12,7 @@ class CoffeeMachine():
 			return ("An empty cup?! Gimme my money back!")
 	
 	def BrokenMachineException(Exception):
-		def __init__(self):
-			raise Exception("This coffee machine has to be repaired.")
+		def __init__(self, error = "This coffee machine has to be repaired."):
 
 	def serve(self, beverage):
 		if self.broken > 10:
