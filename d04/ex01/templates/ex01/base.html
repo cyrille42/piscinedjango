@@ -1,0 +1,17 @@
+{% load static %} 
+
+<html>
+
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+		{% block style %}
+		{% endblock %}
+	</head>
+
+	<body>
+		{% include "nav.html" %}
+		{% block content %}
+		{% endblock %}
+	</body>
+
+</html>

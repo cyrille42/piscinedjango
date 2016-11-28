@@ -1,0 +1,13 @@
+{% extends 'ex01/base.html' %}
+
+
+{% load static %} 
+
+{% block title %}Ex01 : Processus d’affichage d’une page statique.{% endblock %}
+
+{% block style %}<link href="{% static 'ex01/style1.css' %}" type="text/css" rel="stylesheet"/> {% endblock %}
+
+{% block content %}
+<p>pour afficher une page web static , d'abord regler sont url dans urls.py , puis le renvoyer dans view.py , dans view.py faire un render de la page </p>
+
+{% endblock content %}

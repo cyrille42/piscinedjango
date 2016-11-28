@@ -1,0 +1,19 @@
+{% load static %} 
+
+<html>
+
+	<head>
+		<title>ex02</title>
+	</head>
+
+	<body>
+		{% if file %}
+			{{file}}
+		{% endif %}
+		<form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" >Submit</button>
+    </form>
+	</body>
+
+</html>

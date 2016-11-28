@@ -1,0 +1,18 @@
+{% extends 'ex01/base.html' %}
+
+
+{% load static %} 
+
+{% block title %}Ex01 : Moteur de template.{% endblock %}
+
+{% block style %}<link href="{% static 'ex01/style2.css' %}" type="text/css" rel="stylesheet"/> {% endblock %}
+
+
+{% block content %}
+
+<p>pour cree un template , cree une page index , metter une balise block la ou vous voulew que les autre page la remplisse , une fois fait cree votre page , qui herite de index, elle aura forcement tout les parametre de idnex , plus celle que vous voulez ajouter</p>
+<p>les boucle for in c'est cool sa boucle et sa incre;ente automatiquement</p>
+<p>les structu de controle if , euh voir wikipedia</p>
+<p>laffichage de viaribale passer apr context parmnet dafficher la variable sur la page web</p>
+
+{% endblock content %}
