@@ -1,0 +1,30 @@
+{% load static %} 
+
+<html>
+
+	<head>
+		<title>ex03</title>
+		<link href="{% static 'ex03/style.css' %}" type="text/css" rel="stylesheet"/>
+	</head>
+
+	<body>
+		<table>
+   		{% for i in lig %}
+   		<tr bgcolor="rgb(250,250,250)">
+   			{% for j in col %}
+   				{% if j == 0 %}
+	   				<td >
+	   			{% elif j == 1 %}
+	   				<td bgcolor="#00FF00">
+	   			{% elif j == 2 %}
+	   				<td bgcolor="#FF00">
+	   			{% elif j == 3 %}
+	   				<td bgcolor="#0000FF">
+	   		{% endif %}
+   			{% endfor %}
+   			</tr>
+	   	{% endfor %}
+	   	</table>
+	</body>
+
+</html>

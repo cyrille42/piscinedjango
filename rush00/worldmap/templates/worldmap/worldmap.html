@@ -1,0 +1,23 @@
+{% extends 'titlescreen/base.html' %}
+
+{% block content %}
+   <p>Balls:{{ball}}</p>
+	<table>
+   	{% for i in y %}
+   	<tr>
+   		{% for j in x %}
+   			{% if j == posx and i == posy %}
+   				<td bgcolor="red">
+   			{% else %}
+   				<td bgcolor= "blue">
+			{% endif %}
+   		{% endfor %}
+   	</tr>
+	{% endfor %}
+	</table>
+	<a href="{% url 'worldmap:up' %}">Up</a>
+	<a href="{% url 'worldmap:down' %}">Down</a>
+	<a href="{% url 'worldmap:left' %}">Left</a>
+	<a href="{% url 'worldmap:right' %}">Right</a>
+   <a href="{% url 'option:option' %}">start</a>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends 'titlescreen/base.html' %}
+
+{% block content %}
+
+<p>A - Save</p>
+<p>B - Quit</p>
+<p>start - cancel</p>
+
+<a href="{% url 'option:save' %}">A</a>
+<a href="{% url 'titlescreen:titlescreen' %}">B</a>
+<a href="{% url 'worldmap:worldmap' %}">Start</a>
+
+{% endblock content %}
