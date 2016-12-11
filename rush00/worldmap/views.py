@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from .obj.player import *
 
 #remplacer les pos joueurs par des getteur du gestionaire de fichier lors du load de map
-player = Player(settings.POS_PLAYER[0], settings.POS_PLAYER[1],0, map=settings.LEN_MAP)
+player = Player(map=settings.LEN_MAP)
 
 def worldmap(request):
 	return render(request, 'worldmap/worldmap.html',{'x' : range(settings.LEN_MAP[0]), 'y' : range(settings.LEN_MAP[1]), 'posx' : player.getx(), 'posy' : player.gety(), 'ball' : player.getball()})

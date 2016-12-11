@@ -1,0 +1,28 @@
+{% extends 'titlescreen/base.html' %}
+
+{% block content %}
+
+<p>A - Save</p>
+<p>B - Cancel</p>
+
+
+{% if a %}
+<p>SLOT A</p>
+{% endif %}
+
+{% if fleche == 0 %}
+<p>fleche test</p>
+{% endif %}
+
+{% if a == 1 %}
+<p>test</p>
+{% endif %}
+
+
+
+<a href="{% url 'option:up' %}">up</a>
+<a href="{% url 'option:down' %}">down</a>
+<a href="{% url 'option:save' %}">A</a>
+<a href="{% url 'option:option' %}">B</a>
+
+{% endblock content %}
