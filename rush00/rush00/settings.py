@@ -125,7 +125,7 @@ STATIC_URL = '/static/'
 
 LEN_MAP = [10,10]
 
-POS_PLAYER = [5,5]
+POS_PLAYER = [0,0]
 
 ID_MMON = ['frozen', 'pierre']
 

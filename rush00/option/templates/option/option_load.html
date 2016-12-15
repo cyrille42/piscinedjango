@@ -2,7 +2,7 @@
 {% load static %} 
 {% block content %}
 
-<p>A - Save</p>
+<p>A - Load</p>
 <p>B - Cancel</p>
 
 {% if i == 0 %}
@@ -34,9 +34,9 @@ SLOT C 0/10<br />
 
 
 
-<a href="{% url 'option:up' %}">up</a>
-<a href="{% url 'option:down' %}">down</a>
-<a href="{% url 'option:save' %}">A</a>
-<a href="{% url 'option:option' %}">B</a>
+<a href="{% url 'option:upload' %}">up</a>
+<a href="{% url 'option:download' %}">down</a>
+<a href="{% url 'option:load' %}">A</a>
+<a href="{% url 'titlescreen:titlescreen' %}">B</a>
 
 {% endblock content %}

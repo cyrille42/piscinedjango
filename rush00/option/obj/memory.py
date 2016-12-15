@@ -6,26 +6,23 @@ import requests
 # content [2] =list des moviemon du moviedex
 # content[3] = list des infos des moviemon
 class memory():
-	content=[[],0,[],[]]
+	content=[[],"0",[],[]]
 
 	def load(self,name):
-		if os.path.isfile(name):
-			file = open(name, "r")
-			list_content = file.read().split('\n')
-			content[0] = list_content[0].split(":")
-			content[1] = list_content[1]
-			content[2] = list_content[2].split(":")
-			content[3] = list_content[3].split(":\n")
-			file.close()
-			return(self)
-		else:
-			return(self)#verifier au retour si on a bien retourne la bonne sauvegarde
+		file = open(os.path.join(settings.PROJECT_ROOT, name), "r")
+		list_content = file.read().split('\n')
+		self.content[0].append(list_content[0].split(":"))
+		self.content[1] = list_content[1]
+		self.content[2].append(list_content[2].split(":"))
+		self.content[3].append(list_content[3].split(":\n"))
+		file.close()
+		return(self)
 	
 	def dump(self):
 		return (self.content)
 
 	def get_strength(self):
-		return (len(content[2]))
+		return (len(self.content[2]))
 
 	def get_random_movie(self):
 		return()
@@ -35,7 +32,18 @@ class memory():
 		return (string.json())
 
 	def save(self):
+		# delete l;ancienne save avant
 		file = open(os.path.join(settings.PROJECT_ROOT, 'tmp'), "w")
+		file.write(str(self.content[0][0]) + ":" + str(self.content[0][0]) + "\n")
+		file.write(str(self.content[1])+ "\n")
+		for i in range(len(self.content[2])- 1):
+			file.write(self.content[2] + ":")
+		file.write("\n")
+		for i in range(len(self.content[3])):
+			file.write(str(self.content[3][i]) + ":\n")
+
+	def save_slot(self,name):
+		file = open(os.path.join(settings.PROJECT_ROOT, name), "w")
 		file.write(str(self.content[0][0]) + ":" + str(self.content[0][0]) + "\n")
 		file.write(str(self.content[1])+ "\n")
 		for i in range(len(self.content[2])):
@@ -52,3 +60,12 @@ class memory():
 			self.content[3].append(self.get_movie(settings.ID_MMON[i]))
 		self.save()
 		return (self)
+
+	def get_posx(self):
+		return(self.content[0][0])
+
+	def get_posy(self):
+		return(self.content[0][1])
+
+	def set_pos(self,tab):
+		self.content[0] = tab

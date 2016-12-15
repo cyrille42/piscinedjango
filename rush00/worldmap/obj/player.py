@@ -1,11 +1,11 @@
 class Player():
 	def __init__(self, x=0, y=0, ball=0, moviedex=[],map=[0,0]):
 		# recuperer les donner dans le fichier
+		self.map = map
 		self.posx = x
 		self.posy = y
 		self.ball = ball
 		self.moviedex = moviedex
-		self.map = map
 		self.error()
 	def error(self):
 		if self.posx > self.map[0] - 1:
