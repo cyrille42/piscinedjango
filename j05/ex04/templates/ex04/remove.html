@@ -1,0 +1,19 @@
+
+<html>
+
+	<head>
+
+	</head>
+
+	<body>
+		<FORM method="POST">{% csrf_token %}
+			<SELECT name="Delete" size="1">
+			{% for i in sql %}
+				<OPTION>{{i}}
+			{% endfor %}
+			</SELECT>
+			<button TYPE="submit" name="Buton">Delete</button>
+		</FORM>
+	</body>
+
+</html>
