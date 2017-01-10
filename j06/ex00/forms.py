@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import Tip
 
 class RegisterForm(forms.ModelForm):
 
@@ -21,3 +22,10 @@ class LoginForm(forms.ModelForm):
         widgets = {
         	'password' : forms.PasswordInput(),
         }
+
+class TipForm(forms.ModelForm):
+
+    class Meta:
+        model = Tip
+        fields = ('texte',)
+

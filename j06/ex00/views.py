@@ -1,23 +1,39 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 import random
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, TipForm
+from .models import Tip
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.utils import timezone
+from django.core.urlresolvers import reverse
 
 # manque uste l'autorefresh des anonymus session
 
 
 def index(request):
-	if 'mycookie' in request.COOKIES:
-		return render(request, 'ex00/index.html')
-	number = random.randint(0, 9)
-	cookie = settings.RANDOM_NAME[number]
-	# cree dans dictionaire cookie notre valeur
-	request.COOKIES['mycookie'] = cookie
-	response = render(request, "ex00/index.html")
-	response.set_cookie('mycookie', cookie , max_age=42)
-	return response
+	tip = Tip.objects.order_by('date')
+	if request.user.is_authenticated():
+		if request.method == "POST":
+			form = TipForm(request.POST)
+			if form.is_valid():
+				post = form.save(commit=False)
+				post.auteur = request.user
+				post.date = timezone.now()
+				post.save()
+		else:
+			form = TipForm()
+		return render(request, 'ex00/index.html', {'form': form, 'post' : tip})
+	else:
+		if 'mycookie' in request.COOKIES:
+			return render(request, 'ex00/index.html', {'post' : tip})
+		number = random.randint(0, 9)
+		cookie = settings.RANDOM_NAME[number]
+		# cree dans dictionaire cookie notre valeur
+		request.COOKIES['mycookie'] = cookie
+		response = render(request, 'ex00/index.html', {'post' : tip})
+		response.set_cookie('mycookie', cookie , max_age=42)
+		return response
 
 def register(request):
 	if request.user.is_authenticated():
@@ -44,7 +60,6 @@ def login(request):
 		form = LoginForm(request.POST)
 		username = request.POST['username']
 		password = request.POST['password']
-		print(username)
 		user = auth.authenticate(username=username, password=password)
 		if user is not None:#and user.is_active:
 			auth.login(request, user)
@@ -57,4 +72,4 @@ def login(request):
 
 def logout(request):
 	auth.logout(request)
-	return render(request, 'ex00/index.html')
+	return redirect('http://127.0.0.1:8000/')

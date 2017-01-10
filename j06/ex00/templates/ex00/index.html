@@ -6,6 +6,12 @@
 	<nav>
     	<li><a href="{% url 'index:logout' %}">Logout</a></li>
 	</nav>
+    <h1>Add a tip</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" ">ADD</button>
+    </form>
+
 {% else %}
 	hello {{request.COOKIES.mycookie}}
 	<nav>
@@ -13,5 +19,11 @@
 	    <li><a href="{% url 'index:login' %}">login</a></li>
 	</nav>
 {% endif %}
+
+<h1>Tips</h1>
+{% for i in post %}
+	<p>user {{i.auteur}} created this tip at {{i.date}}</p>
+	{{i.texte}}
+{% endfor %}
 
 {% endblock content %}
