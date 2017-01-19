@@ -8,9 +8,6 @@ from django.contrib import auth
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 
-# manque uste l'autorefresh des anonymus session
-
-
 def index(request):
 	tip = Tip.objects.order_by('date')
 	if request.user.is_authenticated():
@@ -19,6 +16,7 @@ def index(request):
 			if form.is_valid():
 				post = form.save(commit=False)
 				post.auteur = request.user
+				# post.vote = 0
 				post.date = timezone.now()
 				post.save()
 		else:

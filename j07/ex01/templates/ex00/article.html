@@ -1,0 +1,13 @@
+{% extends 'ex00/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	hello {{request.user.username}}
+{% else %} 
+	    <li><a href="{% url 'index:login' %}">login</a></li>
+{% endif %}
+{% for i in post %}
+	{{i}}
+{% endfor %}
+
+{% endblock content %}

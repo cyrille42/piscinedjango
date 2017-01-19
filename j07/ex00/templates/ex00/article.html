@@ -1,0 +1,32 @@
+{% extends 'ex00/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	hello {{request.user.username}}
+{% else %} 
+	    <li><a href="{% url 'index:login' %}">login</a></li>
+{% endif %}
+<table>
+	<thead>
+	<tr>
+		<th>title</th>
+		<th>author</th>
+		<th>created</th>
+		<th>sysnopsis</th>
+	</tr>
+	</thead>
+	<tfoot>
+		
+		{% for i in post %}
+			<tr>	
+			<th>{{i}}</th>
+			<th>{{i.author}}</th>
+			<th>{{i.created}}</th>
+			<th>{{i.sysnopsis}}</th>
+			</tr>
+		{% endfor %}
+		
+	</tfoot>
+</table>
+
+{% endblock content %}
