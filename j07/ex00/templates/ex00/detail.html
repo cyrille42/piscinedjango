@@ -6,8 +6,6 @@
 {% else %} 
 	    <li><a href="{% url 'index:login' %}">login</a></li>
 {% endif %}
-{% for i in post %}
-	{{i}}
-{% endfor %}
+<p>{{post.content}}</p>
 
 {% endblock content %}

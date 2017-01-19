@@ -1,0 +1,10 @@
+{% extends 'ex00/base.html' %}
+
+{% block content %}
+	hello {{request.user.username}}
+	{% for i in post %}
+			<p><a href="{% url 'index:detail' pk=i.id %} "> {{i}}</p>
+	{% endfor %}
+
+
+{% endblock content %}

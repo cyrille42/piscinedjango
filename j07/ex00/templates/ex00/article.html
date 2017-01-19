@@ -3,8 +3,6 @@
 {% block content %}
 {% if user.is_authenticated %}
 	hello {{request.user.username}}
-{% else %} 
-	    <li><a href="{% url 'index:login' %}">login</a></li>
 {% endif %}
 <table>
 	<thead>
@@ -13,6 +11,7 @@
 		<th>author</th>
 		<th>created</th>
 		<th>sysnopsis</th>
+		<th>link</th>
 	</tr>
 	</thead>
 	<tfoot>
@@ -23,6 +22,7 @@
 			<th>{{i.author}}</th>
 			<th>{{i.created}}</th>
 			<th>{{i.sysnopsis}}</th>
+			<th><a href="{% url 'index:detail' pk=i.id %} "> detail</th>
 			</tr>
 		{% endfor %}
 		
